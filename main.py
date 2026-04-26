@@ -45,12 +45,12 @@ def generar_analisis(magnitud: float) -> str:
         return "IA no disponible."
 
     try:
-        prompt = f"Sismo magnitud {magnitud}. Riesgo:"
+        prompt = f"Explica en una frase simple el nivel de riesgo de un sismo de magnitud {magnitud}."
 
         response = client.chat.completions.create(
             model="deepseek/deepseek-chat",
             messages=[{"role": "user", "content": prompt}],
-            max_tokens=20
+            max_tokens=80
         )
 
         resultado = response.choices[0].message.content.strip()
